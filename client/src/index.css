@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+*{
+  font-family: "Outfit", sans-serif;
+}
+@layer base{
+  button{
+    @apply cursor-pointer;
+  }
+  input:not([type="checkbox"]){
+    @apply outline-none focus:ring border border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg
+  }
+}
+
+@media print {
+  /* Override body styles for standard A4 printing */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+  }
+
+  /* Hide EVERYTHING on the page by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Only show the resume preview and its children */
+  #resume-preview, #resume-preview * {
+    visibility: visible;
+  }
+
+  /* Position the preview absolutely so it fills the page properly */
+  #resume-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+  }
+}
